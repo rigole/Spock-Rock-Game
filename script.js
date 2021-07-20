@@ -88,6 +88,13 @@ function displayComputerChoice() {
 function updateScore(playerChoice) {
     if (playerChoice === computerChoice){
         resultText.textContent = "It's a tie";
+    } else {
+        const choice = choices[playerChoice];
+        if (choice.defeats.indexOf(computerChoice) > -1){
+            resultText.textContent = "You Won!";
+            playerScoreNumber++;
+            playerScoreEl.textContent = playerScoreNumber;
+        }
     }
 }
 

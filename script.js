@@ -27,6 +27,8 @@ const choices = {
 
  };
 
+let computerChoice = '';
+
 // Reset all 'selected' icons
 function resetSelected() {
     allGameIcons.forEach((icon) => {
@@ -34,9 +36,32 @@ function resetSelected() {
     });
 }
 
+
+function computerRandomChoice() {
+  const computerChoiceNumber = Math.random();
+  if (computerChoiceNumber < 0.2){
+      computerChoice = 'rock';
+  } else if (computerChoiceNumber <= 0.4) {
+      computerChoice = 'paper';
+  } else if (computerChoiceNumber <= 0.6) {
+      computerChoice = 'scissors';
+  } else if (computerChoiceNumber <= 0.8) {
+      computerChoice = 'lizard';
+  } else {
+      computerChoice = 'spock';
+  }
+  console.log(computerChoice);
+}
+
+
+// Call functions to process turn
+function checkResult() {
+    resetSelected();
+    computerRandomChoice();
+}
 // Passing player selection value and styling icons
 function select(playerChoice) {
-    resetSelected();
+    checkResult();
     // Add 'selected' styling & playerChoice
     switch (playerChoice) {
         case 'rock':
